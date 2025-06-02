@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Flask Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <style>
+      /* Quick flex styling for nav to arrange items */
+      .navbar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .nav-auth {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        margin-left: auto;
+        align-items: center;
+      }
+      .nav-auth li a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      #theme-toggle {
+        cursor: pointer;
+        padding: 0.4rem 1rem;
+        border: 1px solid currentColor;
+        border-radius: 4px;
+        background: transparent;
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+        user-select: none;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('blog.create') }}" class="btn">Add Post</a>
+        <a href="{{ url_for('blog.index') }}" class="btn">Posts</a>
+
+        <ul class="nav-auth">
+            {% if g.user %}
+                <li><a href="{{ url_for('auth.logout') }}">{{ g.user['user_name'] }} (Logout)</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+                <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+
+        <button id="theme-toggle" aria-label="Toggle dark/light theme">🌙</button>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  let currentTheme = localStorage.getItem('theme') || 'dark';
+  root.setAttribute('data-theme', currentTheme);
+  toggleBtn.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+  toggleBtn.addEventListener('click', () => {
+    if (root.getAttribute('data-theme') === 'dark') {
+      root.setAttribute('data-theme', 'light');
+      toggleBtn.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

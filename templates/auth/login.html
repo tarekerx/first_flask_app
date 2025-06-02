@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-box">
+    <h1>Login</h1>
+    <form action="/auth/login" method="POST">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" name="email" class="form-input" required>
+
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-input" required>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endblock %}

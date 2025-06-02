@@ -1,0 +1,201 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    margin-right: 1rem;
+}
+
+.nav-auth {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-auth li a {
+    text-decoration: none;
+    color: #333333;
+    transition: color 0.3s ease;
+}
+
+.nav-auth li a:hover {
+    color: #555555;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.01);
+}
+
+/* Headings */
+h1, h2 {
+    color: #333333;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #333333;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Buttons */
+.btn {
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #555555;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #000000;
+}
+
+.btn-danger:hover {
+    background-color: #555555;
+}
+
+/* Post container */
+.post-box, .post {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.post-box:hover,
+.post:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Flash messages */
+.alert {
+    padding: 0.75rem;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    margin-top: 1rem;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Default theme colors (dark) */
+:root[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --btn-bg: #222;
+  --btn-text: #eee;
+  --link-color: #bbb;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #f9f9f9;
+  --text-color: #222;
+  --btn-bg: #ddd;
+  --btn-text: #222;
+  --link-color: #444;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.navbar a.btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid var(--btn-text);
+  transition: background-color 0.3s ease;
+}
+
+.navbar a.btn:hover {
+  background-color: var(--btn-text);
+  color: var(--btn-bg);
+}
+
+.nav-auth li a {
+  color: var(--link-color);
+}
+
+.nav-auth li a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-box" dir="rtl">
+    <h1>{{ "Create Post" if not post else "Update Post" }}</h1>
+    <form action="{{ '/posts/create' if not post else url_for('blog.update', post_id=post['Id']) }}" method="POST">
+        <label for="title" class="form-label">العنوان</label>
+        <input type="text" name="title" id="title" class="form-input" value="{{ post['title'] if post else '' }}" required>
+
+        <label for="body" class="form-label">المحتوى</label>
+        <textarea name="body" id="body" class="form-input" rows="10" required>{{ post['body'] if post else '' }}</textarea>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">{{ "إنشاء" if not post else "تحديث" }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

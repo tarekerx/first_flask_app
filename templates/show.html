@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="post">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+
+    {% if post["auther_id"] == g.user["Id"] %}
+        <div class="post-actions">
+            <a href="{{ url_for('blog.update', post_id=post['Id']) }}" class="btn">Update Post</a>
+            <form action="{{ url_for('blog.delete', post_id=post['Id']) }}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Delete Post</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
